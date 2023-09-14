@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        /* CSS styles */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/img1.jpg');
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .welcome {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            text-decoration: none;
+            color: yellow;
+            font-size: 36px;
+            font-weight: bold;
+            font-family: 'Open Sans', sans-serif;
+            transition: color 0.3s;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .welcome:hover {
+            color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .discount-paragraph {
+            font-size: 20px;
+            font-weight: bolder;
+            text-align: center;
+            font-style: oblique;
+            animation: moveLeftToRight 10s infinite linear;
+            color: blueviolet;
+            display: inline-block;
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-shadow: 2px 2px #FF0000;
+           /* padding: 0px 12px;
+            background-color: yellow;
+            border-radius: 12px;
+            width: fit-content; */
+        }
+        
+        @keyframes moveLeftToRight {
+            0% {
+                transform: translateX(-100%);
+                opacity: 1;
+            }
+            75% {
+                transform: translateX(380%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(500%);
+                opacity: 0;
+            }
+        }
+     /*  .penguins {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .penguin {
+            position: absolute;
+            top: -70px;
+            left: 60px;
+            animation: penguinRun 10s infinite linear;
+            width: 50px; /* Adjust the width to your desired size */
+            height: 50px; /* Adjust the height to your desired size */
+       /* }
+
+        @keyframes penguinRun {
+            0% {
+                left: -200px;
+            }
+            100% {
+                left: calc(100% + 200px);
+            }
+        } 
+
+
+
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="welcome">Halı Yıkama Servis</h1>
+    <div class="container">
+        <h2>Login</h2>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="error">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="btn-container">
+                <input type="submit" class="btn" value="Login">
+            </div>
+        </form>
+        <div class="login-link">
+            Don't have an account? Contact Administrator
+        </div>
+    </div>
+    <div class="discount-paragraph">
+        <p>! Yaz 2023, 20% Indirim! Fırsat kaçırmayın !</p>
+
+    </div>
+    <div class="penguins">
+       <!-- <img src="/static/pen.jpg" alt="Penguin" class="penguin" style="animation-delay: 1s;">
+        <img src="/static/pen.jpg" alt="Penguin" class="penguin" style="animation-delay: 2s;">
+        <img src="/static/pen.jpg" alt="Penguin" class="penguin" style="animation-delay: 3s;"> -->
+    </div>
+
+    <script>
+        setInterval(function() {
+            var welcomeElement = document.querySelector('.welcome');
+            var colors = ['#45a049', 'yellow', 'blue', 'green', 'red', 'orange', 'purple', 'pink', 'teal', 'brown'];
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            welcomeElement.style.color = randomColor;
+        }, 2000);
+    </script>
+
+</body>
+</html>

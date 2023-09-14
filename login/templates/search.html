@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fcarpet-washing-machine&psig=AOvVaw0i1ksdt7rhtk3VEqDir5la&ust=1687650636608000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMi6s9fK2v8CFQAAAAAdAAAAABAS");
+            background-size: cover;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-link {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Users</h1>
+    <form action="/search" method="post" target="_blank">
+        <label for="search_term">Search term:</label>
+        <br>
+        <input type="text" id="search_term" name="search_term">
+        <br><br>
+        <label for="search_date">Search by date:</label>
+        <br>
+        <input type="date" id="search_date" name="search_date">
+        <br><br>
+        <input type="submit" value="Search">
+    </form>
+
+    <form action="/download_excel" method="post">
+        <label for="search_term">Search term:</label>
+        <br>
+        <input type="text" id="search_term" name="search_term">
+        <br><br>
+        <label for="search_date">Search by date:</label>
+        <br>
+        <input type="date" id="search_date" name="search_date">
+        <br><br>
+        <input type="submit" value="Download Excel">
+    </form>
+
+    <a href="/index.html" class="search-link">Go To Home</a>
+    <a href="/logout" class="search-link logout-btn">Logout</a>
+</body>
+</html>

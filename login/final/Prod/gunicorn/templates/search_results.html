@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: floralwhite;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -600px;
+            width: 100%;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: limegreen;
+            padding: 4px;
+            border-radius: 3px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .button {
+            padding: 12px 24px;
+            margin: 10px;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .headline {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .no-results {
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 60px;
+            left: 160px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 60px;
+            left: 30px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 60px;
+            right: 30px;
+        }
+        
+        .sum {
+            margin-top: 20px;
+            font-weight: bold;
+            color: blueviolet;
+            font-size: 1.2em;
+        }
+        
+        .sum-container {
+            position: absolute;
+            top: 110px;
+            right: 240px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-row">
+        <a href="/main.html" class="button">Home</a>
+        <a href="/index" class="button">Add Users</a>
+        <a href="/search" class="button">Search User</a>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+    <h1>Records</h1>
+    {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Sipariş No</th>
+                    <th>Name</th>
+                    <th>Date Added</th>
+                    <th>Time Added</th>
+                    <th>Hali Sayısı</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Fiyat</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result[1] }}</td>
+                        <td>{{ result[2] }}</td>
+                        <td>{{ result[3] }}</td>
+                        <td>{{ result[4] }}</td>
+                        <td>{{ result[5] }}</td>
+                        <td>{{ result[6] }}</td>
+                        <td>{{ result[7] }}</td>
+                        <td>{{ result[8] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if sum_hali_sayisi %}
+            <div class="sum-container">
+                <p class="sum">Total Hali Sayısı : {{ sum_hali_sayisi }}</p>
+                <p class="sum" style="margin-left: 20px;">Total Fiyat : {{ sum_fiyat }} TL</p>
+            </div>
+        {% endif %}
+
+
+    {% else %}
+        <p class="no-results">No results found.</p>
+    {% endif %}
+
+</body>
+</html>

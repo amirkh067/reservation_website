@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            color: black;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url("");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/img1.jpg');
+            background-size: cover;
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            margin-top: 0;
+            text-align: center;
+        }
+        .welcome {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            text-decoration: none;
+            color: yellow; /* Change color to black */
+            font-size: 36px;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+            margin-top: 35px;
+        }
+
+        .welcome:hover {
+            color: #45a049;
+        }
+
+        .seach-container {
+            flex-direction: row;
+            align-items: flex-start;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            justify-content: space-evenly;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            padding: 5px;
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -200px;
+            width: 100%;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: limegreen;
+            padding: 4px;
+            border-radius: 3px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 20px;
+            margin-bottom: 55px;
+        }
+
+        .button {
+            padding: 12px 24px;
+            margin: 10px;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .headline {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .search-link {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        .home-link {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        .logout-btn {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="welcome">Halı Yıkama Servis</h1>
+    <div class="button-row">
+        <a href="/main.html" class="button">Home</a>
+        <a href="/index" class="button">Add Users</a>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+
+
+
+    <div class="seach-container">
+        <div>
+            <h1>Search Orders</h1>
+            <!-- <form action="/search" method="post" target="_blank"> "this is for opening search result in new tab-->
+            <form action="/search" method="post">
+                <label for="search_term">Name or Phonenumber or OrderID:</label>
+                <br>
+                <input type="text" id="search_term" name="search_term">
+                <br><br>
+                <label for="search_date">Date:</label>
+                <br>
+                <input type="date" id="search_date" name="search_date">
+                <br><br>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+
+        <div>
+            <h1>Download Excel</h1>
+            <form action="/download_excel" method="post">
+                <label for="download_search_term">Name or Phonenumber or OrderID:</label>
+                <br>
+                <input type="text" id="download_search_term" name="search_term">
+                <br><br>
+                <label for="download_search_date">Date:</label>
+                <br>
+                <input type="date" id="download_search_date" name="search_date">
+                <br><br>
+                <input type="submit" value="Download Excel">
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

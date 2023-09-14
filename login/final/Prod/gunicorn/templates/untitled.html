@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Halı Yıkama Servis</title>
+    <style>
+        /* CSS styles */
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            color: black;
+            display: flex;
+            flex-direction: column; /* Set flex-direction to column */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/static/img1.jpg');
+            background-size: cover;
+            backdrop-filter: blur(8px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .welcome {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            text-decoration: none;
+            color: yellow; /* Change color to black */
+            font-size: 36px;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .welcome:hover {
+            color: #45a049;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: limegreen;
+            padding: 4px;
+            border-radius: 3px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            padding: 12px 24px;
+            margin: 10px;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: yellowgreen;
+        }
+
+        .headline {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .paragraph-container {
+            margin-left: 0px;
+            margin-right: -900px;
+            float: right;
+            width: 40%; /* Set width to 100% to take up the full width */
+            border: 1px solid black; /* Add border properties */
+            padding: 10px; /* Add padding for spacing within the container */
+            box-sizing: border-box; /* Include padding and border within the width */
+        }
+
+        .paragraph {
+            color: black;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="welcome">Halı Yıkama Servis</h1>
+    <div class="button-container">
+        <div class="button-row">
+            <a href="/main.html" class="button">Home</a>
+            <a href="/index" class="button">Add Users</a>
+            <a href="/search" class="button">Search Users</a>
+            <a href="/logout" class="button">Logout</a>
+            <a href="/contact" class="button">Contact Us</a>
+        </div>
+    </div>
+    <div class="paragraph-container">
+        <div class="paragraph">
+            <!-- Your paragraph content goes here -->
+            <p>Edirne</p>
+            <p>Halılarınız yıllar boyunca</p>
+            <p>Temizlik /p>
+            <p>devam ederler.</p>
+        </div>
+
+    </div>
+    <script>
+    setInterval(function() {
+        var welcomeElement = document.querySelector('.welcome');
+        var colors = ['#45a049', 'yellow', 'blue', 'green', 'red', 'orange', 'purple', 'pink', 'teal', 'brown'];
+        var randomColor = colors[Math.floor(Math.random() * colors.length)];
+        welcomeElement.style.color = randomColor;
+    }, 2000);
+    </script>
+    <script>
+    setInterval(function() {
+        var paragraphElements = document.querySelectorAll('.paragraph');
+        var colors = ['#45a049', 'yellow', 'blue', 'green', 'red', 'orange', 'purple', 'pink', 'teal', 'brown'];
+
+        paragraphElements.forEach(function(element) {
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            element.style.color = randomColor;
+        });
+    }, 2000);
+</script>
+
+
+</body>
+</html>

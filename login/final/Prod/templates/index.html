@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            color: palevioletred;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/static/img1.jpg');
+            background-size: cover;
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="text"] {
+            padding: 5px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .welcome {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            text-decoration: none;
+            color: yellow; /* Change color to black */
+            font-size: 36px;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .welcome:hover {
+            color: #45a049;
+        }
+
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: limegreen;
+            padding: 4px;
+            border-radius: 3px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            margin-top: 75px;
+        }
+
+        .button {
+            padding: 12px 24px;
+            margin: 10px;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .headline {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .search-link {
+            display: inline-block;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            background-color: blueviolet;
+            border: none;
+            border-radius: 6px;
+            z-index: 9999;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .popup.show {
+            display: block;
+        }
+
+        .popup .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .popup #success-message {
+            display: inline-block;
+            padding: 10px 50px; /* Increase padding for lengthier button */
+            color: #4CAF50; /* Set the text color to green */
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease; /* Transition the color change */
+        }
+
+        .popup #close-button {
+            display: inline-block;
+            padding: 10px 35px; /* Increase padding for lengthier button */
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Add box shadow for a more interactive appearance */
+        }
+
+        .popup #close-button:hover {
+            transform: scale(1.05); /* Add scaling effect on hover */
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="welcome">Halı Yıkama Servis</h1>
+    <div class="button-row">
+        <a href="/main.html" class="button">Home</a>
+        <a href="/search" class="button">Search User</a>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+
+    <div class="form-container">
+        <h1>Welcome to Hali Yikama Servis</h1>
+        <form id="add-user-form" action="/add_user" method="post">
+            <label for="username">Name Surname:</label>
+            <br>
+            <input type="text" id="username" name="username" required>
+            <br><br>
+            <label for="address">Address:</label>
+            <br>
+            <input type="text" id="address" name="address" required>
+            <br><br>
+            <label for="hali_sayisi">Hali Sayisi:</label>
+            <br>
+            <input type="number" id="hali_sayisi" name="hali_sayisi" required min="0">
+            <br><br>
+            <label for="fiyat">Fiyat:</label>
+            <br>
+            <input type="number" id="fiyat" name="fiyat" required min="0">
+            <br><br>
+            <label for="phone_number">Phone Number:</label>
+            <br>
+            <input type="text" id="phone_number" name="phone_number" required>
+            <br><br>
+            <input type="submit" value="Add User">
+        </form>
+    </div>
+
+
+    <div id="success-popup" class="popup">
+        <span class="popup-close" onclick="closePopup()">&times;</span>
+        <span id="success-message"></span>
+        <p id="order-id"></p> <!-- Add the id attribute here -->
+        <button id="close-button" onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        // JavaScript code
+        document.getElementById('add-user-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    showSuccessMessage(data.message, data.order_id); // Pass the order_id value
+                    form.reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        function showSuccessMessage(message, order_id) {
+            var successPopup = document.getElementById('success-popup');
+            var successMessage = document.getElementById('success-message');
+            var orderIDElement = document.getElementById('order-id');
+            successMessage.textContent = message;
+            orderIDElement.textContent = "Şipariş no: " + order_id; // Update the order_id display
+            successPopup.classList.add('show');
+        }
+
+        function closePopup() {
+            var successPopup = document.getElementById('success-popup');
+            successPopup.classList.remove('show');
+        }
+    </script>
+</body>
+</html>

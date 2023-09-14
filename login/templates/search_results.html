@@ -1,0 +1,107 @@
+<!-- search_results.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .no-results {
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .sum {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Records</h1>
+    {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Date Added</th>
+                    <th>Hali Sayısı</th>
+                    <th>Phone Number</th>
+                    <th>Time Added</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result[1] }}</td>
+                        <td>{{ result[2] }}</td>
+                        <td>{{ result[3] }}</td>
+                        <td>{{ result[4] }}</td>
+                        <td>{{ result[5] }}</td>
+                        <td>{{ result[6] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if sum_hali_sayisi %}
+            <p class="sum">Total Hali Sayısı : {{ sum_hali_sayisi }}</p>
+        {% endif %}
+
+    {% else %}
+        <p class="no-results">No results found.</p>
+    {% endif %}
+    <a href="/search" class="back-link">Back to Search</a>
+    <a href="/index.html" class="home-link">Go to Home</a>
+    <a href="/logout" class="search-link logout-btn">Logout</a>
+</body>
+</html>
